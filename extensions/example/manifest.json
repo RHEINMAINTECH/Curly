@@ -1,0 +1,37 @@
+{
+    "title": "Example Extension",
+    "version": "1.0.0",
+    "description": "An example extension demonstrating the Curly CMS extension system",
+    "author": "RheinMainTech GmbH",
+    "license": "MIT",
+    "requires": {
+        "cms": "^1.0.0"
+    },
+    "permissions": {
+        "functions": ["file_get_contents", "file_exists"],
+        "classes": []
+    },
+    "hooks": {
+        "before_page_render": "hooks.php",
+        "after_page_render": "hooks.php"
+    },
+    "routes": [
+        {
+            "method": "GET",
+            "path": "/example",
+            "handler": "routes.php@index"
+        }
+    ],
+    "settings": {
+        "enabled": {
+            "type": "boolean",
+            "default": true,
+            "label": "Enable Extension"
+        },
+        "api_key": {
+            "type": "text",
+            "default": "",
+            "label": "API Key"
+        }
+    }
+}

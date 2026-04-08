@@ -1,0 +1,30 @@
+{
+    "name": "rheinmaintech/curly-cms",
+    "description": "An open-source AI-native Agentic Content Management System.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RheinMainTech GmbH",
+            "email": "support@rheinmaintech.de"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.0",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-openssl": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "CurlyCMS\\Core\\": "core/",
+            "CurlyCMS\\App\\": "app/",
+            "CurlyCMS\\Extensions\\": "extensions/"
+        }
+    },
+    "minimum-stability": "alpha",
+    "prefer-stable": true
+}
+

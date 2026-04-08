@@ -1,0 +1,53 @@
+{
+    "name": "Default Theme",
+    "version": "1.0.0",
+    "description": "Default theme for Curly CMS with Bootstrap 5",
+    "author": "RheinMainTech GmbH",
+    "license": "MIT",
+    "requires": {
+        "cms": "^1.0.0"
+    },
+    "supports": {
+        "components": [
+            "container",
+            "row",
+            "column",
+            "heading",
+            "paragraph",
+            "text",
+            "image",
+            "link",
+            "button",
+            "card",
+            "list",
+            "divider",
+            "spacer",
+            "video",
+            "gallery",
+            "alert",
+            "badge",
+            "quote",
+            "code",
+            "accordion",
+            "tabs",
+            "table",
+            "form",
+            "section"
+        ]
+    },
+    "templates": [
+        "default",
+        "full-width",
+        "sidebar-left",
+        "sidebar-right",
+        "landing-page"
+    ],
+    "assets": {
+        "css": [
+            "/public/themes/default/css/style.css"
+        ],
+        "js": [
+            "/public/themes/default/js/main.js"
+        ]
+    }
+}
