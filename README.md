@@ -71,7 +71,7 @@ Instead of raw, unstructured HTML, Curly uses JSON trees. This allows an AI agen
 This project is open-source software licensed under the [MIT License](LICENSE).
 
 **Developed by:** RheinMainTech GmbH  
-**Website:** [rheinmeintech.com](https://rheinmeintech.com)  
-**Email:** support@rheinmeintech.com
+**Website:** [rheinmaintech.com](https://rheinmaintech.com)  
+**Email:** support@rheinmaintech.com
 
 Built for the Agentic Web. An open alternative for maximum accessibility.
