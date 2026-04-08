@@ -2,37 +2,38 @@
   <img src="docs/assets/img/logo.svg" width="200" height="200" alt="Curly CMS Logo">
 </p>
 
-# Curly CMS: The AI-Native Agentic Content Management System
+# Curly: The AI-Native Agentic CMS
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892bf.svg)](https://php.net)
 [![Stability](https://img.shields.io/badge/stability-pre--alpha-red.svg)](https://github.com/RHEINMAINTECH/Curly)
 
-**Curly CMS** is a professional, open-source content management system built for the age of artificial intelligence. It was designed as a modular, extensible counterproposal to proprietary platforms like EmDash, prioritizing developer freedom, agentic interoperability, and security.
+**Curly** ist ein AI-natives Content Management System, das speziell für die Zusammenarbeit mit autonomen Agenten entwickelt wurde. 
+
+Es ist die **niedrigschwellige PHP-Alternative zu Cloudflares EmDash**. Während EmDash eine komplexe `npm`-basierte Infrastruktur benötigt, setzt Curly auf ein klassisches PHP-Backend. Dies ermöglicht Entwicklern und Agenturen einen extrem einfachen Zugang und ein unkompliziertes Deployment auf Standard-Webservern, ohne auf moderne "Agentic Workflows" verzichten zu müssen.
 
 > [!IMPORTANT]
-> **Project Status: Pre-Alpha**. This project is in very early development. APIs and database schemas are subject to frequent changes.
+> **Projekt-Status: Pre-Alpha**. Das Projekt befindet sich in einem sehr frühen Stadium. APIs, Protokoll-Implementierungen und Datenbank-Schemata können sich jederzeit ändern.
 
 ---
 
 ## 🚀 Key Features
 
-- **AI-Native Core:** Deep integration with OpenAI, Anthropic Claude, and local Ollama instances.
-- **Agentic Interoperability:** Native support for **A2A (Agent-to-Agent)** messaging and **MCS (Model Context Server)** protocols for multi-agent workflows.
-- **Secure Sandbox:** A hardened execution environment for extensions, restricting file system and system access while allowing safe PHP execution.
-- **JSON-Based Layouts:** All page structures are stored as machine-readable JSON, enabling AI agents to design and reconfigure UI components dynamically.
-- **Bootstrap 5 UI:** Built-in component library using the industry-standard Bootstrap 5 framework.
-- **Open-Source Freedom:** Fully self-hosted, MIT-licensed, and designed to be the extensible alternative to locked-down proprietary CMS offerings.
+- **PHP-Native (Low-Threshold):** Schnelles Deployment auf jedem Standard-Server. Kein komplexer Node.js/npm-Build-Stack für den Kernbetrieb erforderlich.
+- **Agentic-Ready (A2A):** Native Unterstützung für das **Agent-to-Agent** Protokoll zur Kommunikation zwischen verschiedenen KI-Instanzen.
+- **Modell-Kontext (MCS):** Implementierung des **Model Context Server** Protokolls, um LLMs strukturierten Zugriff auf Website-Daten und Layouts zu geben.
+- **Secure Extension Sandbox:** Ein sicheres Ausführungsumfeld für Erweiterungen, das den Zugriff auf das Host-System strikt reglementiert.
+- **JSON-Strukturen:** Seitenlayouts werden als maschinenlesbares JSON gespeichert (Bootstrap 5 kompatibel), sodass KI-Agenten das Design verstehen und autonom modifizieren können.
+- **Multi-Provider AI:** Support für OpenAI, Anthropic (Claude) und lokale Modelle (Ollama).
 
 ---
 
-## 🛠 Architecture
+## 🛠 Architektur & Philosophie
 
-### The Secure Sandbox
-Curly CMS solves the "untrusted code" problem by wrapping all extensions in a `CurlyCMS\Core\Sandbox`. Extensions have zero access to `exec`, `system`, or raw file writing. They interact with the core through a strictly governed `SandboxAPI`.
+Curly verfolgt das Ziel, die Flexibilität von EmDash in die PHP-Welt zu bringen. Damit bleibt die Hoheit über Daten und Erweiterungen einfach handhabbar. 
 
-### Machine-Readable Design
-Pages are structured as hierarchical JSON trees:
+### JSON-First Layouts
+Anstatt unstrukturiertem HTML nutzen wir JSON-Bäume. Ein Agent sieht nicht nur Text, sondern eine Struktur:
 {
     "type": "container",
     "children": [
@@ -41,8 +42,8 @@ Pages are structured as hierarchical JSON trees:
             "children": [
                 {
                     "type": "column",
-                    "cols": 8,
-                    "children": [{"type": "heading", "content": "AI-Generated Layout"}]
+                    "cols": 12,
+                    "children": [{"type": "heading", "content": "Agent-Managed Content"}]
                 }
             ]
         }
@@ -51,68 +52,25 @@ Pages are structured as hierarchical JSON trees:
 
 ---
 
-## 📦 Installation
+## 📦 Installation (Kurzform)
 
-### Prerequisites
-- PHP 8.0 or higher
-- SQLite (default) or MySQL/PostgreSQL
-- OpenSSL & cURL extensions
-
-### Step-by-Step
-1. **Clone the repository**
+1. **Repository klonen:**
    git clone https://github.com/RHEINMAINTECH/Curly.git
-   cd Curly
-
-2. **Configure Environment**
-   cp .env.example .env
-   # Edit .env with your database and AI API keys
-
-3. **Run Installer**
+2. **Setup:**
+   `.env.example` zu `.env` kopieren und API-Keys für die gewünschten KI-Provider hinterlegen.
+3. **Install-Script:**
    php install/install.php
-
-4. **Serve the Application**
-   Point your web server's document root to the `public` directory.
-
----
-
-## 🤖 AI Protocols
-
-### A2A (Agent-to-Agent)
-Allows external AI agents to communicate directly with Curly CMS to perform tasks:
-POST /api/a2a/task
-Authorization: Bearer <TOKEN>
-Content-Type: application/json
-
-{
-  "task_type": "generate_post",
-  "params": {
-    "title": "The Future of Agentic Web",
-    "prompt": "Write a deep dive into A2A protocols..."
-  }
-}
-
-### MCS (Model Context Server)
-Provides a standardized way for LLMs to query the "context" of your website, including settings, page structures, and content schemas.
+4. **Webserver:**
+   Document-Root auf den Ordner `public` zeigen lassen.
 
 ---
 
-## 🧩 Extensions
-Extensions live in `/extensions`. Each requires a `manifest.json`. Curly CMS automatically discovers these and allows activation via the admin dashboard.
+## 📄 Lizenz & Kontakt
 
----
+Das Projekt steht unter der [MIT Lizenz](LICENSE).
 
-## 🛡 Security
-- **Password Hashing:** Argon2ID (industry standard).
-- **CSRF Protection:** Native on all state-changing requests.
-- **XSS Prevention:** Automatic output escaping via the View engine.
-- **Extension Isolation:** No unvetted code runs with system privileges.
+**Entwickelt von:** RheinMainTech GmbH  
+**Web:** [rheinmeintech.com](https://rheinmeintech.com)  
+**E-Mail:** support@rheinmeintech.com
 
-## 📄 License
-Curly CMS is open-source software licensed under the [MIT license](LICENSE).
-
----
-
-## 🤝 Contributing
-We welcome contributions! Please see our contributing guidelines for more information.
-
-Developed by **RheinMainTech GmbH**. Built for the Agentic Web.
+Gebaut für das Agentic Web. Als offener Gegenentwurf für maximale Zugänglichkeit.
