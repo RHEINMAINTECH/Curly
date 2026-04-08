@@ -1,12 +1,17 @@
+<p align="center">
+  <img src="docs/assets/img/logo.svg" width="200" height="200" alt="Curly CMS Logo">
+</p>
+
 # Curly CMS: The AI-Native Agentic Content Management System
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892bf.svg)](https://php.net)
-[![Stability](https://img.shields.io/badge/stability-v1.0.0--alpha-orange.svg)]()
+[![Stability](https://img.shields.io/badge/stability-pre--alpha-red.svg)](https://github.com/RHEINMAINTECH/Curly)
 
 **Curly CMS** is a professional, open-source content management system built for the age of artificial intelligence. It was designed as a modular, extensible counterproposal to proprietary platforms like EmDash, prioritizing developer freedom, agentic interoperability, and security.
 
-While traditional CMS platforms treat AI as a plugin, Curly CMS treats the AI as a native citizen. Through its implementation of the **Model Context Server (MCS)** and **Agent-to-Agent (A2A)** protocols, Curly allows LLMs to not only generate content but to understand and manipulate site structure in a machine-readable JSON format.
+> [!IMPORTANT]
+> **Project Status: Pre-Alpha**. This project is in very early development. APIs and database schemas are subject to frequent changes.
 
 ---
 
@@ -55,8 +60,8 @@ Pages are structured as hierarchical JSON trees:
 
 ### Step-by-Step
 1. **Clone the repository**
-   git clone https://github.com/rheinmaintech/curly-cms.git
-   cd curly-cms
+   git clone https://github.com/RHEINMAINTECH/Curly.git
+   cd Curly
 
 2. **Configure Environment**
    cp .env.example .env
